@@ -261,6 +261,140 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/08/Untitled/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小泫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuan's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/08/Untitled/" itemprop="url">内网穿透-frp设置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-08T14:44:00+08:00">
+                2020-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          frp-地址https://github.com/fatedier/frp/releasesfrp端口转发操作
+server 端默认配置 [common]
+bind_port = 7000
+vhost_http_port = 8080
+
+
+client 端配置
+
+123456789[common]s
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/08/Untitled/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/07/Mysql-frm-ibd-%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -354,27 +488,15 @@
       
         
           
-            <h5 id="参考文章-https-www-cnblogs-com-meitian-p-9886654-html"><a href="#参考文章-https-www-cnblogs-com-meitian-p-9886654-html" class="headerlink" title="参考文章 https://www.cnblogs.com/meitian/p/9886654.html"></a>参考文章 <a href="https://www.cnblogs.com/meitian/p/9886654.html" target="_blank" rel="noopener">https://www.cnblogs.com/meitian/p/9886654.html</a></h5><h6 id="下载恢复python2的包-mysql-utilities"><a href="#下载恢复python2的包-mysql-utilities" class="headerlink" title="下载恢复python2的包 mysql-utilities"></a>下载恢复python2的包 mysql-utilities</h6><pre><code>python2 -m pip install mysql-utilities</code></pre><h6 id="使用命令"><a href="#使用命令" class="headerlink" title="使用命令"></a>使用命令</h6><pre><code> mysqlfrm --diagnostic /data/sakila/actor.frm
-
-会输出其frm 文件的表结构
-
-
- CREATE TABLE `test_db`.`v_keys` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `k` varchar(300) DEFAULT NULL,
-  `p` varchar(600) NOT NULL,
-  `d` varchar(1500) DEFAULT NULL,
-  `g` datetime DEFAULT NULL,
-  `gm` datetime NOT NULL,
-PRIMARY KEY `PRIMARY` (`i`),
-UNIQUE KEY `unique` (`p`,`k`)
-) ENGINE=InnoDB;</code></pre><h6 id="在数据库创建同样结构表执行如下-DISCARD命令"><a href="#在数据库创建同样结构表执行如下-DISCARD命令" class="headerlink" title="在数据库创建同样结构表执行如下 DISCARD命令"></a>在数据库创建同样结构表执行如下 DISCARD命令</h6><pre><code>ALTER TABLE table1 DISCARD TABLESPACE;</code></pre><h6 id="复制ibd到frm-目录"><a href="#复制ibd到frm-目录" class="headerlink" title="复制ibd到frm 目录"></a>复制ibd到frm 目录</h6><p> 然后吧 idb 文件的数据复制到frm 的目录下 </p>
-<p>在执行导入命令</p>
-<p>ALTER TABLE  <code>table1</code> IMPORT TABLESPACE;</p>
-<p>重启mysql 打开表即发现数据恢复成功</p>
-<p><img src="/images/pasted-3.png" alt="upload successful"></p>
-
-          
+          参考文章 https://www.cnblogs.com/meitian/p/9886654.html下载恢复python2的包 mysql-utilitiespython2 -m pip install mysql-utilities使用命令 mysqlfrm --diagnostic /data
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/07/Mysql-frm-ibd-%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -514,9 +636,16 @@ UNIQUE KEY `unique` (`p`,`k`)
       
         
           
-            <h4 id="今天是-2020年的1月2日-也是我农历的20年代的第一个生日"><a href="#今天是-2020年的1月2日-也是我农历的20年代的第一个生日" class="headerlink" title="今天是 2020年的1月2日 也是我农历的20年代的第一个生日"></a>今天是 2020年的1月2日 也是我农历的20年代的第一个生日</h4><h4 id="生日快乐！！！！"><a href="#生日快乐！！！！" class="headerlink" title="生日快乐！！！！"></a>生日快乐！！！！</h4><h5 id="希望今年好好努力吧。"><a href="#希望今年好好努力吧。" class="headerlink" title="希望今年好好努力吧。"></a>希望今年好好努力吧。</h5><h6 id="尽快找到自己的方向和人生目标！！！"><a href="#尽快找到自己的方向和人生目标！！！" class="headerlink" title="尽快找到自己的方向和人生目标！！！"></a>尽快找到自己的方向和人生目标！！！</h6><pre><code>-------己亥年腊月初八</code></pre><p><img src="/images/pasted-1.png" alt="upload successful"></p>
+          今天是 2020年的1月2日 也是我农历的20年代的第一个生日生日快乐！！！！希望今年好好努力吧。尽快找到自己的方向和人生目标！！！-------己亥年腊月初八
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/02/%E7%94%9F%E6%97%A5%E5%BF%AB%E4%B9%90%E4%BD%A0%E5%A5%BD2020/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -656,9 +785,16 @@ UNIQUE KEY `unique` (`p`,`k`)
       
         
           
-            <p>hello world</p>
+          12#!/usr/bin/env python3print("Hello, World!");
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/31/newpapername/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -742,7 +878,7 @@ UNIQUE KEY `unique` (`p`,`k`)
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -764,7 +900,7 @@ UNIQUE KEY `unique` (`p`,`k`)
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
