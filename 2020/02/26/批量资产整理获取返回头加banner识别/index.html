@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:type" content="article">
+<meta property="og:title" content="批量资产整理获取返回头加banner识别">
+<meta property="og:url" content="http://yoursite.com/2020/02/26/%E6%89%B9%E9%87%8F%E8%B5%84%E4%BA%A7%E6%95%B4%E7%90%86%E8%8E%B7%E5%8F%96%E8%BF%94%E5%9B%9E%E5%A4%B4%E5%8A%A0banner%E8%AF%86%E5%88%AB/index.html">
+<meta property="og:site_name" content="Xuan&#39;s blog">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-26T09:57:27.000Z">
+<meta property="article:modified_time" content="2020-02-26T09:59:14.970Z">
+<meta property="article:author" content="小泫">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/26/批量资产整理获取返回头加banner识别/"/>
+
+
+
+
+
+  <title>批量资产整理获取返回头加banner识别 | Xuan's blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuan's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">唯有父母和前路不可辜负</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/26/%E6%89%B9%E9%87%8F%E8%B5%84%E4%BA%A7%E6%95%B4%E7%90%86%E8%8E%B7%E5%8F%96%E8%BF%94%E5%9B%9E%E5%A4%B4%E5%8A%A0banner%E8%AF%86%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小泫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuan's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">批量资产整理获取返回头加banner识别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-26T17:57:27+08:00">
+                2020-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">defaultport = "7,9,13,19,21,22,23,25,53,79,80,81,82,83,84,85,86,87,88,89,90,106,110,111,119,135,139,143,443,445,465,512,513,514,554,563,585,636,808,990,991,992,993,994,995,1025,1027,1080,1098,1099,1352,1433,1521,1525,1935,2049,2082,2083,2086,2087,2401,3260,3306,3128,3389,4444,4848,4899,5000,5432,5800,5900,5901,5984,6000,6001,6002,6003,60004,6005,6006,6007,60008,6009,6379,7001,8000,8001,8002,8003,8004,8005,8006,8007,8008,8009,8010,8042,8080,8081,8082,8083,8084,8085,8086,8087,8088,8089,8090,8181,8443,8447,8686,8880,9008,9043,9044,9045,9060,9061,9062,9080,9081,9082,9083,9084,9085,9086,9087,9088,9089,9090,9111,9443,10001,11443,11444,27017,50000,50013,65301"</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">ports =[<span class="number">80</span>,<span class="number">3306</span>]</span><br><span class="line"></span><br><span class="line">lock = threading.Lock()</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Scan_tool</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.http_ip = []</span><br><span class="line">        self.zhunbei_port = []</span><br><span class="line">        self.headers = &#123;</span><br><span class="line">            <span class="string">"accept-encoding"</span>:<span class="string">"accept-encoding"</span>,</span><br><span class="line">            <span class="string">"User-Agent"</span>:<span class="string">"Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)"</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">## 加载url 或者ip 进入待扫描队列</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">read_file</span><span class="params">(self,filepath)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(filepath):</span><br><span class="line">            print(<span class="string">"待扫描域名或者ip未在队列里请先导入好url"</span>)</span><br><span class="line">            sys.exit(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">with</span> open(filepath,<span class="string">'r'</span>,encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">for</span> url_ip <span class="keyword">in</span> f.readlines():</span><br><span class="line">                     self.http_ip.append(url_ip.strip(<span class="string">'\r\n'</span>))</span><br><span class="line">                <span class="keyword">return</span> self.http_ip</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write_file</span><span class="params">(self,file_path,file_byte)</span>:</span></span><br><span class="line">        <span class="keyword">with</span> open(file_path,<span class="string">'a+'</span>,encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> w:</span><br><span class="line">            w.write(file_byte+<span class="string">"\n"</span>)</span><br><span class="line">            w.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">###执行端口扫描：</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">scan_port</span><span class="params">(self,threadCount)</span>:</span></span><br><span class="line">        <span class="comment">#lock.acquire()</span></span><br><span class="line">        <span class="keyword">for</span> ip_url <span class="keyword">in</span> self.http_ip:</span><br><span class="line">            print(ip_url)</span><br><span class="line">            self.write_file(args.out_file,ip_url)</span><br><span class="line">            <span class="keyword">for</span> port <span class="keyword">in</span> threadCount:</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">                    s.settimeout(<span class="number">2</span>)</span><br><span class="line">                    s.connect((ip_url, port))</span><br><span class="line">                    http_url = <span class="string">"http://"</span>+ip_url+<span class="string">":"</span>+str(port)</span><br><span class="line">                    <span class="keyword">try</span>:</span><br><span class="line">                        result = s.recv(<span class="number">100</span>).decode(<span class="string">'unicode_escape'</span>).strip()</span><br><span class="line">                    <span class="keyword">except</span> Exception <span class="keyword">as</span> error:</span><br><span class="line">                        result = <span class="string">"未识别到端口服务"</span></span><br><span class="line">                    s.close()</span><br><span class="line">                    <span class="keyword">try</span>:</span><br><span class="line">                        r = requests.get(http_url, headers=self.headers, timeout=<span class="number">2</span>)</span><br><span class="line">                        r.encoding = <span class="string">"utf-8"</span></span><br><span class="line">                        regex = <span class="string">"&lt;title&gt;(.*?)&lt;/title&gt;"</span></span><br><span class="line">                        title = re.findall(regex, r.text)[<span class="number">0</span>]</span><br><span class="line">                        <span class="keyword">if</span> <span class="string">'server'</span> <span class="keyword">in</span> r.headers:</span><br><span class="line">                            server = r.headers[<span class="string">'server'</span>]</span><br><span class="line">                        <span class="keyword">else</span>:</span><br><span class="line">                            server = <span class="string">"未获取到server"</span></span><br><span class="line">                        <span class="keyword">if</span> <span class="string">'X-Powered-By'</span> <span class="keyword">in</span> r.headers:</span><br><span class="line">                            xpb = r.headers[<span class="string">'X-Powered-By'</span>]</span><br><span class="line">                        <span class="keyword">else</span>:</span><br><span class="line">                            xpb =<span class="string">'未获取到xpb'</span></span><br><span class="line">                        r.close()</span><br><span class="line">                    <span class="keyword">except</span> Exception <span class="keyword">as</span> error:</span><br><span class="line">                        title = <span class="string">"为获取到标题"</span></span><br><span class="line">                        server = <span class="string">"未获取到server"</span></span><br><span class="line">                        xpb = <span class="string">"未获取到xpb"</span></span><br><span class="line">                    <span class="comment">#print(port,"端口开放","&lt;banner:&#123;&#125;&gt;","&lt;title:&#123;&#125;&gt;","&lt;server:&#123;&#125;&gt;","&lt;xpb:&#123;&#125;&gt;".format(result,title,server,xpb))</span></span><br><span class="line"></span><br><span class="line">                    print(<span class="string">"[+]"</span>,port,<span class="string">"open"</span>,<span class="string">"&lt;banner&gt;:"</span>,result,<span class="string">"&lt;title&gt;:"</span>,title,<span class="string">"&lt;server&gt;:"</span>,server</span><br><span class="line">                          ,<span class="string">"&lt;X-Powered-By&gt;:"</span>,xpb)</span><br><span class="line"></span><br><span class="line">                    c = <span class="string">"[-]"</span>+<span class="string">"\t"</span>+ str(port)+<span class="string">"\t"</span>+<span class="string">"open"</span>+<span class="string">"\t"</span>+ <span class="string">"&lt;banner&gt;:"</span>+<span class="string">"\t"</span>+result+<span class="string">"\t"</span>+ <span class="string">"&lt;title&gt;:"</span>+<span class="string">"\t"</span>+ title+<span class="string">"\t"</span>+ <span class="string">"&lt;server&gt;:"</span>+<span class="string">"\t"</span>+ server+<span class="string">"\t"</span>+<span class="string">"&lt;X-Powered-By&gt;:"</span>+<span class="string">"\t"</span>+xpb</span><br><span class="line">                    self.write_file(args.out_file,c)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                <span class="keyword">except</span> Exception <span class="keyword">as</span> error:</span><br><span class="line">                        <span class="keyword">pass</span></span><br><span class="line">        <span class="comment">#lock.release()</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self,threadCount)</span>:</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(defaultport), threadCount):</span><br><span class="line">                self.zhunbei_port.append(defaultport[:threadCount])</span><br><span class="line">                print(self.zhunbei_port)</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(self.zhunbei_port)):</span><br><span class="line">                    t =threading.Thread(target=self.scan_port,args=(self.zhunbei_port[i],))</span><br><span class="line">                    t.start()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    defaultport = [<span class="number">7</span>, <span class="number">9</span>, <span class="number">13</span>, <span class="number">19</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">25</span>, <span class="number">53</span>, <span class="number">79</span>, <span class="number">80</span>, <span class="number">81</span>, <span class="number">82</span>, <span class="number">83</span>, <span class="number">84</span>, <span class="number">85</span>, <span class="number">86</span>, <span class="number">87</span>, <span class="number">88</span>, <span class="number">89</span>, <span class="number">90</span>, <span class="number">106</span>, <span class="number">110</span>, <span class="number">111</span>,</span><br><span class="line">                   <span class="number">119</span>, <span class="number">135</span>, <span class="number">139</span>, <span class="number">143</span>, <span class="number">443</span>, <span class="number">445</span>, <span class="number">465</span>, <span class="number">512</span>, <span class="number">513</span>, <span class="number">514</span>, <span class="number">554</span>, <span class="number">563</span>, <span class="number">585</span>, <span class="number">636</span>, <span class="number">808</span>, <span class="number">990</span>, <span class="number">991</span>, <span class="number">992</span>, <span class="number">993</span>, <span class="number">994</span>,</span><br><span class="line">                   <span class="number">995</span>, <span class="number">1025</span>, <span class="number">1027</span>, <span class="number">1080</span>, <span class="number">1098</span>, <span class="number">1099</span>, <span class="number">1352</span>, <span class="number">1433</span>, <span class="number">1521</span>, <span class="number">1525</span>, <span class="number">1935</span>, <span class="number">2049</span>, <span class="number">2082</span>, <span class="number">2083</span>, <span class="number">2086</span>, <span class="number">2087</span>, <span class="number">2401</span>,</span><br><span class="line">                   <span class="number">3260</span>, <span class="number">3306</span>, <span class="number">3128</span>, <span class="number">3389</span>, <span class="number">4444</span>, <span class="number">4848</span>, <span class="number">4899</span>, <span class="number">5000</span>, <span class="number">5432</span>, <span class="number">5800</span>, <span class="number">5900</span>, <span class="number">5901</span>, <span class="number">5984</span>, <span class="number">6000</span>, <span class="number">6001</span>, <span class="number">6002</span>, <span class="number">6003</span>,</span><br><span class="line">                   <span class="number">60004</span>, <span class="number">6005</span>, <span class="number">6006</span>, <span class="number">6007</span>, <span class="number">60008</span>, <span class="number">6009</span>, <span class="number">6379</span>, <span class="number">7001</span>, <span class="number">8000</span>, <span class="number">8001</span>, <span class="number">8002</span>, <span class="number">8003</span>, <span class="number">8004</span>, <span class="number">8005</span>, <span class="number">8006</span>, <span class="number">8007</span>,</span><br><span class="line">                   <span class="number">8008</span>, <span class="number">8009</span>, <span class="number">8010</span>, <span class="number">8042</span>, <span class="number">8080</span>, <span class="number">8081</span>, <span class="number">8082</span>, <span class="number">8083</span>, <span class="number">8084</span>, <span class="number">8085</span>, <span class="number">8086</span>, <span class="number">8087</span>, <span class="number">8088</span>, <span class="number">8089</span>, <span class="number">8090</span>, <span class="number">8181</span>, <span class="number">8443</span>,</span><br><span class="line">                   <span class="number">8447</span>, <span class="number">8686</span>, <span class="number">8880</span>, <span class="number">9008</span>, <span class="number">9043</span>, <span class="number">9044</span>, <span class="number">9045</span>, <span class="number">9060</span>, <span class="number">9061</span>, <span class="number">9062</span>, <span class="number">9080</span>, <span class="number">9081</span>, <span class="number">9082</span>, <span class="number">9083</span>, <span class="number">9084</span>, <span class="number">9085</span>, <span class="number">9086</span>,</span><br><span class="line">                   <span class="number">9087</span>, <span class="number">9088</span>, <span class="number">9089</span>, <span class="number">9090</span>, <span class="number">9111</span>, <span class="number">9443</span>, <span class="number">10001</span>, <span class="number">11443</span>, <span class="number">11444</span>, <span class="number">27017</span>, <span class="number">50000</span>, <span class="number">50013</span>, <span class="number">65301</span>]</span><br><span class="line">    print(len(defaultport))</span><br><span class="line">    parser = argparse.ArgumentParser()</span><br><span class="line">    parser.description = <span class="string">'Web_Port_scan V_1.0'</span></span><br><span class="line">    parser.add_argument(<span class="string">'-ports'</span>,<span class="string">'-p'</span>, help=<span class="string">'端口定义-&gt; 22,21,3389,3306'</span>, type=str,default=defaultport)</span><br><span class="line">    parser.add_argument(<span class="string">'file'</span>, help=<span class="string">'导入ip_url列表'</span>, type=str)</span><br><span class="line">    parser.add_argument(<span class="string">'out_file'</span>, help=<span class="string">'导出结果文件名'</span>, type=str)</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    <span class="keyword">if</span> args.ports != defaultport:</span><br><span class="line">        new_ports = []</span><br><span class="line">        new_ports.append(args.ports.split(<span class="string">','</span>))</span><br><span class="line">        x = list(map(int, new_ports[<span class="number">0</span>]))</span><br><span class="line">        defaultport = x</span><br><span class="line">    <span class="keyword">elif</span> len(args.ports) == <span class="number">1</span>:</span><br><span class="line">        defaultport = [int(args.port)]</span><br><span class="line">    aa =Scan_tool()</span><br><span class="line">    aa.read_file(args.file)</span><br><span class="line">    aa.run(<span class="number">141</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/23/%E7%BB%95%E8%BF%87disable-function/" rel="next" title="绕过disable_function">
+                <i class="fa fa-chevron-left"></i> 绕过disable_function
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/tx.jpg"
+                alt="小泫" />
+            
+              <p class="site-author-name" itemprop="name">小泫</p>
+              <p class="site-description motion-element" itemprop="description">人的手就这么大握不住的东西太多了</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小泫</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
