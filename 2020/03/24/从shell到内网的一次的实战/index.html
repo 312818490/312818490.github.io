@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="从shell 到 内网的一次实战过程记录一下自己踩的坑 探测目标打开目标发现 是一个学习管理系统 用firefox 的 插件 wappalyzer 大致可以观测出目标网站的架构  信息搜集用layer 跑了一遍同子站资产后 提取出ip 后 放入 脚本探测常用端口 后大致得到如下信息       初始一看 3306 8009 的对外开放 便开始相应测试但是在测试过程中发现 3306连接错误">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从shell到内网的一次的实战">
+<meta property="og:url" content="http://yoursite.com/2020/03/24/%E4%BB%8Eshell%E5%88%B0%E5%86%85%E7%BD%91%E7%9A%84%E4%B8%80%E6%AC%A1%E7%9A%84%E5%AE%9E%E6%88%98/index.html">
+<meta property="og:site_name" content="Xuan&#39;s blog">
+<meta property="og:description" content="从shell 到 内网的一次实战过程记录一下自己踩的坑 探测目标打开目标发现 是一个学习管理系统 用firefox 的 插件 wappalyzer 大致可以观测出目标网站的架构  信息搜集用layer 跑了一遍同子站资产后 提取出ip 后 放入 脚本探测常用端口 后大致得到如下信息       初始一看 3306 8009 的对外开放 便开始相应测试但是在测试过程中发现 3306连接错误">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/images/pasted-36.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-37.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-38.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-39.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-40.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-41.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-42.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-43.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-44.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-45.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-46.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-47.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-48.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-49.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-50.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-51.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-52.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-53.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-54.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-55.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-56.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-57.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-58.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-59.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-60.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-61.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-62.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-63.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-64.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-65.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-67.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-68.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-69.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-70.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-71.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-72.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-73.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-74.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-75.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-76.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-77.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-78.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-79.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-80.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-81.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-82.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-83.png">
+<meta property="article:published_time" content="2020-03-24T15:18:55.000Z">
+<meta property="article:modified_time" content="2020-03-24T17:34:28.326Z">
+<meta property="article:author" content="Kd1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-36.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/24/从shell到内网的一次的实战/"/>
+
+
+
+
+
+  <title>从shell到内网的一次的实战 | Xuan's blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuan's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">80000</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/24/%E4%BB%8Eshell%E5%88%B0%E5%86%85%E7%BD%91%E7%9A%84%E4%B8%80%E6%AC%A1%E7%9A%84%E5%AE%9E%E6%88%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kd1">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/tx.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuan's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从shell到内网的一次的实战</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-24T23:18:55+08:00">
+                2020-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="从shell-到-内网的一次实战过程"><a href="#从shell-到-内网的一次实战过程" class="headerlink" title="从shell 到 内网的一次实战过程"></a>从shell 到 内网的一次实战过程</h4><p><b>记录一下自己踩的坑</b></p>
+<h5 id="探测目标"><a href="#探测目标" class="headerlink" title="探测目标"></a>探测目标</h5><pre><code>打开目标发现 是一个学习管理系统 用firefox 的 插件 wappalyzer 大致可以观测出目标网站的架构</code></pre><p><img src="/images/pasted-36.png" alt="upload successful"></p>
+<p><img src="/images/pasted-37.png" alt="upload successful"></p>
+<h5 id="信息搜集"><a href="#信息搜集" class="headerlink" title="信息搜集"></a>信息搜集</h5><pre><code>用layer 跑了一遍同子站资产后 提取出ip 后 放入 脚本探测常用端口 后大致得到如下信息</code></pre><p>   <img src="/images/pasted-38.png" alt="upload successful"></p>
+<p>   <b>初始一看 3306 8009 的对外开放 便开始相应测试但是在测试过程中发现 3306连接错误</b></p>
+<p><img src="/images/pasted-39.png" alt="upload successful"><br>    <b>且telnet 后 并未显示 banner  只是一个空显示</p>
+<p><img src="/images/pasted-40.png" alt="upload successful"><br>    <b>后面测试 8009  情况也是如此  故此常见端口 并没有发现什么特别有价值的信息</p>
+<pre><code>准备google 语法搜集一下同子站有没有其他泄露信息
+  这里推荐一下Se7en 师傅的google-hack 工具 
+   https://github.com/r00tSe7en/GoogleHackingTool</code></pre><p><img src="/images/pasted-41.png" alt="upload successful"></p>
+<p>经过github和google一番搜集后  发现一些用户登入入口 以及sql下载 可惜的是初始化的sql没啥价值</p>
+<p><img src="/images/pasted-42.png" alt="upload successful"></p>
+<p>再把相关的登录入口  以及 信息泄露的一些资料 做好存储 准备回过头来看网站</p>
+<h5 id="寻找漏洞"><a href="#寻找漏洞" class="headerlink" title="寻找漏洞"></a>寻找漏洞</h5><p>经过探测之后发现其他子站存在sql注入  其中几处sql 注入 不太好利用</p>
+<p><img src="/images/pasted-43.png" alt="upload successful"></p>
+<p>发现是字符型注入用双引号包裹 这里我们要闭合” 但是最后测试下来并不是特别好利用 错误后的会返回到一个指定错误页面</p>
+<p><img src="/images/pasted-44.png" alt="upload successful"></p>
+<p>最终在其他同子站下寻找到一处可利用的报错注入  </p>
+<p><img src="/images/pasted-45.png" alt="upload successful"></p>
+<p><img src="/images/pasted-46.png" alt="upload successful"></p>
+<p>这里只要闭合’ 就行<br>Payload  class=1’ and 1=1–+</p>
+<p>这里我用的是updatexml 报错注入进行  </p>
+<p><img src="/images/pasted-47.png" alt="upload successful"></p>
+<p><img src="/images/pasted-48.png" alt="upload successful"></p>
+<p><img src="/images/pasted-49.png" alt="upload successful"><br>User 和version() 报出来后 我们知道不是root用户<br>且mysql版本是5.6以上<br>Mysql 大于5.6以后 默认 secure-file-priv  是    NULL<br>所以默认是写不了shell<br>不过可以用慢查询日志方法去试试<br><a href="https://www.cnblogs.com/c1e4r/articles/8902444.html" target="_blank" rel="noopener">https://www.cnblogs.com/c1e4r/articles/8902444.html</a></p>
+<p>Database() 并不是我们要的数据库  所以需要重新定位 </p>
+<p>这里引用小透明师傅教我的直接用information_schema 去定位  </p>
+<p>大部分数据库字段名 和 html表单的name 名称差不多 所以可以直接去定位 </p>
+<p><img src="/images/pasted-50.png" alt="upload successful"></p>
+<p><img src="/images/pasted-51.png" alt="upload successful"></p>
+<p>Payload<br>1’ and updatexml(1,concat(0x7e,(select concat(table_schema,’:’,table_name) from information_schema.columns where column_name =’account’ limit 13,1),0x7e),1)–+</p>
+<p>这样就直接可以大致定位当前应用的table_name 以及table_schema </p>
+<p>最终payload 为 </p>
+<p><img src="/images/pasted-52.png" alt="upload successful"></p>
+<p>最终使用注入获取到了相关用户密码</p>
+<h5 id="漏洞利用-登录加上传shell"><a href="#漏洞利用-登录加上传shell" class="headerlink" title="漏洞利用-登录加上传shell"></a>漏洞利用-登录加上传shell</h5><p>登入后发现可以直接跳转到需要的目标网站 可见账户可能通用</p>
+<p><img src="/images/pasted-53.png" alt="upload successful"></p>
+<p><img src="/images/pasted-54.png" alt="upload successful"></p>
+<p>在该应用下翻了翻可利用的地方发现一处编辑器上传 修改文件头后成功上传shell</p>
+<p><img src="/images/pasted-55.png" alt="upload successful"></p>
+<h5 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h5><p>蚁剑连接后</p>
+<p><img src="/images/pasted-56.png" alt="upload successful"></p>
+<p>发现有三个网段<br>10.1.1.*<br>10.0.1.*<br>192.168.1.*</p>
+<p>本地开了3306 </p>
+<p><img src="/images/pasted-57.png" alt="upload successful"></p>
+<p>使用frp 等类似代理软件将流量转发出来  </p>
+<p><img src="/images/pasted-58.png" alt="upload successful"></p>
+<p>然后翻一下web 的配置文件 可能配置文件或者用户文件有账户密码什么的</p>
+<p>果不其然</p>
+<p><img src="/images/pasted-59.png" alt="upload successful"></p>
+<p>打通隧道后使用navicat 连接查看 </p>
+<p><img src="/images/pasted-60.png" alt="upload successful">现在定位目标数据同理也是跟注入shell语法一样用 information_schema 去判断 </p>
+<p>最终成功定位表 以及数据  至此任务就成功啦</p>
+<p><img src="/images/pasted-61.png" alt="upload successful"></p>
+<pre><code>1.横向渗透 ms17-010
+虚拟机 
+配置proxy-chains 使用 socks5 代理 
+然后加载msf 模块 auxiliary/admin/smb/ms17_010_command 探测 
+ Windows 下也有可探测工具  </code></pre><p><img src="/images/pasted-62.png" alt="upload successful"></p>
+<p><img src="/images/pasted-63.png" alt="upload successful"></p>
+<p>-。-运气不好只探测到一台2003 的  </p>
+<p>使用 exploit/windows/smb/ms17_010_eternalblue 去执行的时候  发现并没有成功打到</p>
+<p>推测可能有防火墙 smb 流量被拦截了 </p>
+<p><img src="/images/pasted-64.png" alt="upload successful"></p>
+<p>这时候不要慌 还有一个执行命令的模块<br>auxiliary/admin/smb/ms17_010_command<br>配置好相关设置  run 一波</p>
+<p><img src="/images/pasted-65.png" alt="upload successful"></p>
+<p>Sysytem 权限<br>由于server2003没有powershell  无法使用cs 远程上线 </p>
+<pre><code>这里可以启用来宾账户即guest 
+1.cmd 命令 net user guest /active:yes 或者添加隐藏账户 net user sttas$ stt123456 /add
+
+
+使用命令添加账户 并添加到管理员  3389远程 上去   机器拿下</code></pre><p><img src="/images/pasted-67.png" alt="upload successful"></p>
+<p><img src="/images/pasted-68.png" alt="upload successful"></p>
+<p>systeminfo 后发现机器是工作组<br>且 又多了一个网段 10.2.1.* </p>
+<p>Cs 上线</p>
+<p>使用cs 生成exe 复制到该台机器上并运行成功上线  </p>
+<p><img src="/images/pasted-69.png" alt="upload successful"></p>
+<p><img src="/images/pasted-70.png" alt="upload successful"></p>
+<h5 id="信息搜集-1"><a href="#信息搜集-1" class="headerlink" title="信息搜集"></a>信息搜集</h5><p>抓一下hash<br>并没有抓到administratord的密码 </p>
+<p><img src="/images/pasted-71.png" alt="upload successful"></p>
+<p>抓到了一个账户的hash 但是没有解出来<br>放到cs的凭证里 以便后续使用psexec 去碰撞密码 </p>
+<p>在目标机器一阵寻找后发现 了一些有价值的信息   </p>
+<p><img src="/images/pasted-72.png" alt="upload successful"></p>
+<p>探测到该网段下192.168.1.153 的sqlserver<br>且同目录下txt 也发现一些价值信息 </p>
+<p><img src="/images/pasted-73.png" alt="upload successful"></p>
+<p>探测后发现192.168.1.153 是存活的 且3389 和1433 开启 为server2008 r2</p>
+<p><img src="/images/pasted-74.png" alt="upload successful"></p>
+<p>运气很好的是 使用sa 跟其他机器的sa密码碰撞 是成功的<br>至此 192.168.1.153  有了sa 账户的权限  </p>
+<p><img src="/images/pasted-75.png" alt="upload successful"></p>
+<p>Mssql 的sa 权限可以执行 cmd 命令 所以我们可以直接用cs 生成powershell 命令上线<br>前提要开启mssql 的xp_cmd 扩展 </p>
+<pre><code>exec sp_configure &apos;show advanced options&apos;, 1;reconfigure;
+exec sp_configure &apos;xp_cmdshell&apos;,1;reconfigure;
+https://www.jianshu.com/p/6f8f4906b4cf</code></pre><p><img src="/images/pasted-76.png" alt="upload successful"></p>
+<p><img src="/images/pasted-77.png" alt="upload successful"></p>
+<p>最终成功上线 </p>
+<p><img src="/images/pasted-78.png" alt="upload successful"></p>
+<p>导hash 后 抓取到Administrator的密码</p>
+<p><img src="/images/pasted-79.png" alt="upload successful"></p>
+<p>但是使用psexec 挨个去横向 没有一个成功的-.-</p>
+<h5 id="信息利用"><a href="#信息利用" class="headerlink" title="信息利用"></a>信息利用</h5><p>在回过头整理好之前收集的的密码  user  加 password 搜集起来<br>进行对应相应服务爆破  </p>
+<p>如数据库 ssh  rdp  smb  这种 </p>
+<p><img src="/images/pasted-80.png" alt="upload successful"></p>
+<p>Proxychains 代理好使用</p>
+<p><img src="/images/pasted-81.png" alt="upload successful"></p>
+<p><img src="/images/pasted-82.png" alt="upload successful"></p>
+<p>果然发现了 ssh 有通用口令 且是root  我们测试一下看能否 登录</p>
+<p>经过测试后 发现大部分ssh 的使用通用此密码  </p>
+<p><img src="/images/pasted-83.png" alt="upload successful"></p>
+<p>Mysql 爆破后 也找出了很多<br>可惜的是rdp 和 smb  并没有 成功</p>
+<h5 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h5><p>继续翻其他ssh 机器的敏感文件<br>看 bash_histroy web配置文件<br>再找其他网段<br>再统一搜集价值信息<br>在使用凭证 漏洞去横向<br>拿更多的机器争取定位到最终目标机 </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/08/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B21-%E5%9F%9F%E4%B8%8B%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" rel="next" title="内网安全攻防1-域下信息搜集">
+                <i class="fa fa-chevron-left"></i> 内网安全攻防1-域下信息搜集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/tx.jpg"
+                alt="Kd1" />
+            
+              <p class="site-author-name" itemprop="name">Kd1</p>
+              <p class="site-description motion-element" itemprop="description">也曾为了找到紫霞仙子踏破铁鞋</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#从shell-到-内网的一次实战过程"><span class="nav-number">1.</span> <span class="nav-text">从shell 到 内网的一次实战过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#探测目标"><span class="nav-number">1.1.</span> <span class="nav-text">探测目标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信息搜集"><span class="nav-number">1.2.</span> <span class="nav-text">信息搜集</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寻找漏洞"><span class="nav-number">1.3.</span> <span class="nav-text">寻找漏洞</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#漏洞利用-登录加上传shell"><span class="nav-number">1.4.</span> <span class="nav-text">漏洞利用-登录加上传shell</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内网渗透"><span class="nav-number">1.5.</span> <span class="nav-text">内网渗透</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信息搜集-1"><span class="nav-number">1.6.</span> <span class="nav-text">信息搜集</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信息利用"><span class="nav-number">1.7.</span> <span class="nav-text">信息利用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#后续"><span class="nav-number">1.8.</span> <span class="nav-text">后续</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kd1</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
